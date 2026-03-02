@@ -25,6 +25,9 @@ static std::optional<std::vector<GoLiveApi::Gpu>> system_gpu_data()
 	std::vector<GoLiveApi::Gpu> adapter_info;
 
 	for (i = 0; factory->EnumAdapters1(i, adapter.Assign()) == S_OK; ++i) {
+		if (i != 1)
+			continue;
+
 		DXGI_ADAPTER_DESC desc;
 		char name[512] = "";
 		char driver_version[512] = "";
